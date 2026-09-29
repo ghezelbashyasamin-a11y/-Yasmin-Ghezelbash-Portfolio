@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yasamin Ghezelbash — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Jost:wght@300;400;500&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --ink:#f1e8d8; --cream:#eadcc4; --muted:#a79f92; --line:rgba(241,232,216,.35);
+  --hand:"Patrick Hand","Comic Sans MS",cursive; --sans:"Jost","Vazirmatn",system-ui,sans-serif; --fa:"Vazirmatn","Tahoma",sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0}
+.page{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;align-items:center;padding:28px clamp(20px,5vw,44px)}
+.brand{display:flex;align-items:center;gap:16px;font-size:15px;letter-spacing:.09em;font-weight:400}
+.brand svg{width:22px;height:22px}
+.social{display:flex;gap:22px}
+.social a{color:var(--ink);display:grid;place-items:center;width:26px;height:26px;opacity:.95;transition:opacity .2s,transform .2s}
+.social a:hover,.social a:focus-visible{opacity:.6;transform:translateY(-2px);outline:none}
+.social svg{width:24px;height:24px;fill:currentColor}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px 60px}
+.cat{width:min(280px,66vw);height:auto;margin-bottom:34px;animation:peek 1.2s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes peek{from{transform:translateY(38px);opacity:0}to{transform:none;opacity:1}}
+.blink{animation:blink 5s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.heart{animation:beat 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+h1{font-family:var(--hand);font-weight:400;font-size:clamp(34px,6vw,44px);line-height:1.3;margin:0 0 44px;max-width:16ch;letter-spacing:.03em}
+.choices{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;width:100%}
+.pill{display:flex;align-items:center;justify-content:space-between;gap:16px;width:min(278px,100%);height:72px;padding:0 30px;border-radius:999px;font-size:18px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink);font-family:var(--sans);transition:transform .25s,background .25s,border-color .25s}
+.pill:hover,.pill:focus-visible{transform:translateY(-3px);outline:none}
+.pill:focus-visible{box-shadow:0 0 0 3px rgba(234,220,196,.45)}
+.pill.en:hover{border-color:var(--ink);background:rgba(241,232,216,.06)}
+.pill .tag{display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--ink);border-radius:6px;font-size:11px;font-weight:500}
+.pill .label{flex:1;text-align:left;padding-left:2px;letter-spacing:.03em}
+.pill svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pill.fa{background:var(--cream);color:#1a1712;border-color:var(--cream);font-family:var(--fa);font-size:19px;justify-content:flex-start;gap:0}
+.pill.fa .label{text-align:center;padding:0;letter-spacing:0}
+.pill.fa:hover{background:#f3e7d1}
+.swirl{width:46px;margin-top:38px}
+.hint{margin:26px 0 12px;font-size:13px;letter-spacing:.3em;color:var(--muted);font-weight:300}
+.mini-heart{width:13px;height:13px}
+.deco{position:fixed;left:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:170px;z-index:1;pointer-events:none}
+/* result view */
+#result{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px 60px;gap:18px}
+#result h2{font-family:var(--hand);font-weight:400;font-size:clamp(34px,7vw,52px);margin:0}
+#result p{max-width:34ch;color:var(--muted);font-size:18px;line-height:1.7;margin:0}
+#back{margin-top:14px;height:52px;width:auto;padding:0 28px;font-size:16px}
+body.chosen main{display:none} body.chosen #result{display:flex}
+body.chosen[dir="rtl"] #result{font-family:var(--fa)}
+body.chosen[dir="rtl"] #result h2,body.chosen[dir="rtl"] #back{font-family:var(--fa)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="bg" aria-hidden="true"></div>
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#f1e8d8" stroke-width="1.3" stroke-linejoin="round"><path d="M12 2c.6 5.2 4.8 9.4 10 10-5.2.6-9.4 4.8-10 10-.6-5.2-4.8-9.4-10-10 5.2-.6 9.4-4.8 10-10z"/></svg>
+      <span>Yasamin Ghezelbash</span>
+    </div>
+    <nav class="social" aria-label="Social links">
+      <a href="https://github.com/ghezelbashyasamin-a11y" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/yasamin-ghezelbash-21585735b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8.1 19H5.1V9.7h3zM6.6 8.4a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.5c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3V9.7h2.9V11c.4-.8 1.4-1.5 2.9-1.5 3 0 3.5 2 3.5 4.5z"/></svg></a>
+      <a href="malito:ghezelbashyasamin@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a>
+    </nav>
+  </header>
+
+  <main>
+    <svg class="cat" viewBox="0 0 280 140" role="img" aria-label="A small cat peeking over a ledge">
+      <defs><clipPath id="c"><rect x="0" y="0" width="280" height="119"/></clipPath></defs>
+      <g stroke="#f1e8d8" stroke-width="2.4" stroke-linecap="round" opacity=".9">
+        <path d="M22 60l7 10"/><path d="M6 78l14 -4" opacity=".7"/><path d="M247 78l12 -9"/><path d="M252 97h10" opacity=".8"/>
+      </g>
+      <path class="heart" d="M225 44c-6-8-16-1-10 7l10 10 10-10c6-8-4-15-10-7z" fill="none"/>
+      <path class="heart" d="M225 38c-5-7-14-1-9 6l9 9 9-9c5-7-4-13-9-6z" fill="#f1e8d8" transform="translate(0,-2)"/>
+      <g clip-path="url(#c)">
+        <path d="M88 62 82 16l38 24z" fill="#3b3b3d"/><path d="M92 54 89 28l19 12z" fill="#2a2a2c"/>
+        <path d="M192 62l6-46-38 24z" fill="#3b3b3d"/><path d="M188 54l3-26-19 12z" fill="#2a2a2c"/>
+        <ellipse cx="140" cy="88" rx="66" ry="46" fill="#3b3b3d"/>
+        <g stroke="#555" stroke-width="1.4" stroke-linecap="round" opacity=".7">
+          <path d="M96 60l6 8M104 55l4 9M180 60l-6 8M172 55l-4 9M126 46l1 8M140 44v9M154 46l-1 8"/>
+        </g>
+        <g class="blink"><circle cx="118" cy="82" r="14" fill="#f1e8d8"/><circle cx="118" cy="83" r="10.5" fill="#141414"/><circle cx="114.5" cy="79" r="3.6" fill="#fff"/><circle cx="121" cy="87" r="1.6" fill="#fff"/></g>
+        <g class="blink"><circle cx="162" cy="82" r="14" fill="#f1e8d8"/><circle cx="162" cy="83" r="10.5" fill="#141414"/><circle cx="158.5" cy="79" r="3.6" fill="#fff"/><circle cx="165" cy="87" r="1.6" fill="#fff"/></g>
+        <path d="M136 95h8l-4 4z" fill="#8a6f6f"/>
+        <path d="M140 99v3m0 0c-3 3-7 2-8-1m8 1c3 3 7 2 8-1" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="106" cy="118" rx="14" ry="9" fill="#4a4a4c"/><ellipse cx="174" cy="118" rx="14" ry="9" fill="#4a4a4c"/>
+        <g stroke="#2a2a2c" stroke-width="1.4" stroke-linecap="round"><path d="M101 112v5M107 111v6M113 112v5M169 112v5M175 111v6M181 112v5"/></g>
+      </g>
+      <path d="M10 119h260" stroke="#f1e8d8" stroke-width="1.4" opacity=".45"/>
+    </svg>
+
+    <h1 id="title">How would you like to explore my portfolio?</h1>
+
+    <div class="choices">
+      <button class="pill en" id="pick-en" type="button">
+        <span class="tag">EN</span>
+        <span class="label">English version</span>
+        <svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+      </button>
+      <button class="pill fa" id="pick-fa" type="button" lang="fa" dir="rtl">
+        <svg viewBox="0 0 24 24"><path d="M20 12H4M10 6l-6 6 6 6"/></svg>
+        <span class="label">نسخه فارسی</span>
+      </button>
+    </div>
+
+    <svg class="swirl" viewBox="0 0 46 30" fill="none" stroke="#f1e8d8" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><path d="M2 26c10 2 20-1 28-9 4-4 3-9-1-9s-5 6-1 8c5 2 12-2 16-7"/></svg>
+    <p class="hint">Choose your language</p>
+    <svg class="mini-heart" viewBox="0 0 24 24" fill="none" stroke="#f1e8d8" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 21C4 14.5 2 11 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 3-2 6.500-10 13z"/></svg>
+  </main>
+
+  <section id="result" aria-live="polite">
+    <h2 id="r-title"></h2>
+    <p id="r-text"></p>
+    <button class="pill en" id="back" type="button"></button>
+  </section>
+</div>
+
+<svg class="deco" viewBox="0 0 170 90" fill="none" stroke="#f1e8d8" stroke-width="1.3" stroke-linecap="round" aria-hidden="true">
+  <path d="M0 26c30-6 52 6 66 26 6 9 3 16-4 16-8 0-9-9-1-12 8-3 25-1 40 2 20 2 45 3 66-5" transform="translate(0,4)"/>
+  <path d="M110 10c.4 4 3.400 7 7 7.500-3.600.5-6.600 3.500-7 7.500-.4-4-3.400-7-7-7.500 3.600-.5 6.600-3.500 7-7.500z" stroke-width="1.1"/>
+</svg>
+
+<script>
+(function(){
+  // Breathing radial-gradient background (vanilla version of the animated-gradient component)
+  var bg=document.getElementById('bg'), t=0;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function paint(){
+    var b=Math.sin(t)*7;
+    bg.style.background='radial-gradient(130% '+(115+b)+'% at 50% 118%, #3a2c20 0%, #1a1511 38%, #0c0b0a 62%, #0a0a0a 100%)';
+    if(!reduce){t+=0.012;requestAnimationFrame(paint);}
+  }
+
+  
+  paint();
+
+  var copy={
+    en:{lang:'en',dir:'ltr',title:'Hi, I\u2019m Yasamin.',text:'Your English portfolio goes here \u2014 projects, experience and contact.',back:'Change language'},
+    fa:{lang:'fa',dir:'rtl',title:'سلام، من یاسمین هستم',text:'رزومه و نمونه‌کارهای فارسی شما اینجا قرار می‌گیرد.',back:'تغییر زبان'}
+  };
+  function choose(k){
+    var c=copy[k];
+    document.documentElement.lang=c.lang;document.documentElement.dir=c.dir;document.body.dir=c.dir;
+    document.getElementById('r-title').textContent=c.title;
+    document.getElementById('r-text').textContent=c.text;
+    document.getElementById('back').textContent=c.back;
+    document.body.classList.add('chosen');
+    try{localStorage.setItem('portfolio-lang',k);}catch(e){}
+  }
+  function reset(){
+    document.documentElement.lang='en';document.documentElement.dir='ltr';document.body.dir='ltr';
+    document.body.classList.remove('chosen');
+    try{localStorage.removeItem('portfolio-lang');}catch(e){}
+  }
+document.getElementById('pick-en').addEventListener('click', function () {
+  location.href = "file:///D:/whoisme/portfolio-en.html";
+});
+
+document.getElementById('pick-fa').addEventListener('click', function () {
+  location.href = "file:///D:/whoisme/portfolio-fa.html#top";
+});
+
+  document.getElementById('pick-en').addEventListener('click',function(){choose('en');});
+  document.getElementById('pick-fa').addEventListener('click',function(){choose('fa');});
+  document.getElementById('back').addEventListener('click',reset);
+})();
+</script>
+</body>
+</html>

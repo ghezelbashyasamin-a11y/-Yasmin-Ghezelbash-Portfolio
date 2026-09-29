@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&family=Vazirmatn:wght@300;400;500;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf6f2;--bg2:#f4ede6;--card:#fffdfb;--ink:#1e2230;--mute:#6d6862;--acc:#c58c82;--btn:#1f2431;--btnink:#fff;--line:rgba(30,34,48,.12);--hd:"Cormorant Garamond",Georgia,serif;--bd:"Jost",system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[data-theme=dark]{--bg:#0b0d12;--bg2:#0f1218;--card:#151923;--ink:#f3ece4;--mute:#a9a39b;--acc:#f2cfc0;--btn:#f2cfc0;--btnink:#2a1d18;--line:rgba(255,255,255,.09)}
+[lang=fa]{--hd:"Vazirmatn",Tahoma,sans-serif;--bd:"Vazirmatn",Tahoma,sans-serif}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.8 var(--bd);transition:background .3s,color .3s}
+a{color:inherit}
+.w{max-width:1120px;margin:auto;padding:0 24px}
+section{padding:68px 0;border-top:1px solid var(--line)}
+h2{font:500 clamp(26px,4vw,34px)/1.2 var(--hd);display:flex;align-items:center;gap:18px;margin:0 0 30px}
+h2::after{content:"";width:64px;height:1px;background:var(--acc)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 85%,transparent)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
+.logo{display:flex;align-items:center;gap:12px;font:500 20px var(--hd);text-decoration:none}
+.mono{min-width:38px;height:38px;padding:0 8px;border:1px solid var(--acc);border-radius:11px;display:grid;place-items:center;font-size:20px}
+.links{display:flex;gap:30px}.links a{color:var(--mute);text-decoration:none;font-size:13px}.links a:hover{color:var(--ink)}
+.ic{display:flex;gap:14px;align-items:center}
+.ic a,.ic button{color:var(--ink);background:none;border:0;padding:0;cursor:pointer;display:grid;place-items:center}
+.ic svg{width:21px;height:21px}
+svg{flex:none}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 26px;border-radius:999px;background:var(--btn);color:var(--btnink);text-decoration:none;font-size:14px;border:1px solid var(--btn);transition:transform .2s}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}.btn:hover{transform:translateY(-2px)}
+.ic .btn{display:inline-flex;white-space:nowrap;color:var(--ink)}
+.btn.sm{padding:6px 16px;font-size:12px}.btn svg{width:15px;height:15px}
+.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero{border:0;padding:52px 0 76px}
+.hi{color:var(--mute);margin:0;font-size:18px}
+h1{font:500 clamp(40px,6.4vw,66px)/1.15 var(--hd);margin:6px 0 14px}
+.role{display:flex;gap:10px;align-items:center;font-size:20px;margin:0 0 16px}.role svg{width:18px;height:18px;color:var(--acc)}
+.lead{color:var(--mute);max-width:46ch;margin:0 0 26px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.pic,.cpic{position:relative}
+.blob{aspect-ratio:1/1.05;border-radius:58% 42% 52% 48%/46% 54% 46% 54%;overflow:hidden;border:1px solid var(--line)}
+.blob img,.blob .ph,.im img,.im .ph,.ab .fr img,.ab .fr .ph,.arch img,.arch .ph{width:100%;height:100%;object-fit:cover;display:block}
+.ph{display:grid;place-items:center;text-align:center;padding:12px;background:linear-gradient(135deg,var(--card),var(--bg2));color:var(--mute);font-size:13px;border:1px dashed var(--line)}
+.cat{position:absolute;inset-inline-end:2%;bottom:0;width:62px;color:var(--ink)}
+.note{position:absolute;font:500 19px/1.15 Caveat,var(--bd);color:var(--acc);transform:rotate(-7deg);white-space:pre-line}
+.n1{inset-inline-start:-70px;top:12%}.n2{inset-inline-end:-6px;bottom:-26px}.n3{inset-inline-end:-40px;top:0}.n4{inset-inline-end:-6px;bottom:8%}
+.ab{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.fr{position:relative;aspect-ratio:1/.9;border-radius:32px;overflow:hidden;border:1px solid var(--line)}
+.ab ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;font-size:14px}
+.ab li{display:flex;gap:12px;align-items:center;color:var(--mute)}.ab li svg{width:18px;height:18px;color:var(--acc)}
+.sg{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.sh{display:flex;align-items:center;gap:12px;font-size:14px}
+.sh b{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:500}
+.bar{height:5px;border-radius:9px;background:var(--line);margin:12px 0 4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc);border-radius:9px}
+.sk small{display:block;text-align:end;color:var(--mute);font-size:11px}
+.tr{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 14px}
+.tr::-webkit-scrollbar{display:none}
+.pc{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.im{aspect-ratio:16/10}
+.pb{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pb h3{margin:0;font:500 17px var(--bd)}.pb p{margin:0;color:var(--mute);font-size:13px;line-height:1.7}
+.tg{display:flex;gap:6px;flex-wrap:wrap}.tg span{font-size:11px;padding:2px 12px;border:1px solid var(--line);border-radius:99px;color:var(--mute)}
+.pl{display:flex;justify-content:space-between;margin-top:auto;padding-top:8px;font-size:12px}
+.pl a{display:flex;gap:6px;align-items:center;text-decoration:none}.pl svg{width:13px;height:13px}
+.ct{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+#ds{display:flex;gap:8px}#ds i{width:8px;height:8px;border-radius:9px;background:var(--line);cursor:pointer;transition:.25s}#ds i.on{width:24px;background:var(--acc)}
+.ar{display:flex;gap:10px}
+.ar button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.ar button:disabled{opacity:.35;cursor:default}.ar svg{width:18px;height:18px}
+[dir=rtl] .ar svg{transform:scaleX(-1)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cl{display:flex;gap:22px;flex-wrap:wrap;font-size:13px}.cl a{display:flex;gap:9px;align-items:center;text-decoration:none;color:var(--mute)}.cl svg{width:18px;height:18px;color:var(--ink)}
+.arch{aspect-ratio:16/10;border-radius:200px 200px 18px 18px;overflow:hidden;border:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:22px 0}
+.fw{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:var(--mute)}
+.fw .logo{font-size:14px;color:var(--ink)}.fw .mono{min-width:32px;height:32px;font-size:16px}
+.up{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink)}.up svg{width:16px;height:16px}
+@media(max-width:900px){.hg,.g2,.ab{grid-template-columns:1fr;gap:34px}.links,.note{display:none}.sg{grid-template-columns:repeat(3,1fr)}.pc{flex-basis:calc((100% - 18px)/2)}.pic{max-width:420px}}
+@media(max-width:600px){.sg{grid-template-columns:repeat(2,1fr)}.pc{flex-basis:100%}.fw p{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ===== EDIT ME: links, images, texts ===== */
+const LINKS={github:"https://github.com/ghezelbashyasamin-a11y",linkedin:"https://www.linkedin.com/in/yasamin-ghezelbash-21585735b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",email:"",resume:"ghezelbashyasamin@gmail.com"};
+const L={
+lang:"en",dir:"ltr",theme:"dark",title:"Yasamin Ghezelbash — Portfolio",toggle:0,
+mono:"Y",logoName:"Yasamin Ghezelbash",resumeBtn:1,resume:"Resume",
+nav:["Home ","About","Projects","Skills","Contact"],
+hi:"Hello, I’m",name:"Yasamin Ghezelbash",role:"Front-End Developer",
+intro:"I build clean, responsive and user-friendly web experiences with a focus on modern technologies and thoughtful design. Currently a Computer Science student, passionate about web development, AI and creating things that make an impact.",
+cta1:"View Projects",cta2:{t:"GitHub",h:LINKS.github,i:"gh"},
+n1:"Good code,\nBetter tomorrow ♥",n2:"small steps,\nbig dreams ♥",n4:"Let’s build something\ngreat together ♥",
+aboutT:"About Me",
+about:"I’m Yasamin, a Computer Science student at Tehran West. I’m interested in front-end development, web technologies and the exciting world of AI. I enjoy turning ideas into real and functional web projects, and I’m always eager to learn, improve and take on new challenges.",
+info:[["mail","Ghezelbashyasamin@gmail.com"],["pin","Tehran, Iran"],["globe","Open to remote & on-site opportunities"]],
+skillsT:"Skills",projT:"My Projects",live:"Live Demo",gh:"GitHub",
+contactT:"Get In Touch",contactP:"I’m always open to new opportunities, collaborations and interesting conversations.",
+email:"mailto:Ghezelbashyasamin@gmail.com",copy:"© 2026. All rights reserved.",ph:"Add image URL",
+/* ---- IMAGE URLS: paste your link between the quotes ---- */
+img:{
+ hero:"me.jpeg",      // main portrait (top right)
+ about:"h1.jpeg",     // About Me photo
+ contact:"enter.jpeg"    // Get In Touch photo
+},
+/* ---- PROJECTS (slider): add or remove blocks freely. img = project screenshot URL ---- */
+projects:[
+{t:"Weather App",d:"A simple weather application using Open-Meteo API with real-time data, animations and a clean UI.",tags:["HTML","CSS","JS","API"],img:"app.jpeg",live:"#",gh:"https://github.com/ghezelbashyasamin-a11y/weather-app"},
+{t:"Iran Travel Website",d:"A travel website for exploring Iran’s provinces with a clean and engaging design.",tags:["HTML","CSS","JS","Bootstrap"],img:"iran.jpg",live:"http://saafarname.ir/",gh:"#"},
+{t:"Shop 7-11",d:"An online cake & sweets shop built with WordPress and WooCommerce with a minimal and friendly design.",tags:["WordPress","WooCommerce"],img:"shop.jpeg",live:"https://shop7-11.ir/",gh:"#"},
+{t:"Antipad",d:"A website for an antivirus business with a certificate and product-code verification feature.",tags:["HTML","CSS","JS"],img:"anti.jpg",live:"http://antipad.ir/",gh:"https://github.com/ghezelbashyasamin-a11y/antipod"}
+]};
+
+const $=s=>document.querySelector(s);
+document.title=L.title;window.PH=L.ph;
+const S=[["HTML",100,"H5","#e44d26"],["CSS",100,"C3","#2965f1"],["JavaScript",100,"JS","#c9a400"],["jQuery",100,"jQ","#0868ac"],["Bootstrap",100,"B","#7952b3"],["Ajax",100,"Ax","#3d8bd4"],["API",70,"API","#8a8f98"],["WordPress",70,"WP","#21759b"],["Node.js",30,"N","#539e43"],["Git & GitHub",80,"Git","#f05033"],["Network+",60,"N+","#d9534f"],["Algorithms & Data Structures",100,"DS","#c58c82"],["Machine Learning",40,"ML","#8b7cf6"]];
+const st=(d,x)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ic={
+gh:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>',
+in:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8.1 19H5.1V9.7h3zM6.6 8.4a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.5c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3V9.7h2.9V11c.4-.8 1.4-1.5 2.9-1.5 3 0 3.5 2 3.5 4.5z"/></svg>',
+mail:st('<rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/>'),
+moon:st('<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/>'),
+pin:st('<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/>'),
+globe:st('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),
+link:st('<path d="M10 14a4 4 0 0 0 5.700 0l3-3a4 4 0 0 0-5.700-5.700l-1 1M14 10a4 4 0 0 0-5.700 0l-3 3a4 4 0 0 0 5.700 5.700l1-1"/>'),
+arr:st('<path d="M4 12h16M14 6l6 6-6 6"/>'),
+dl:st('<path d="M12 4v11M7 10.500l5 5 5-5M5 20h14"/>'),
+ext:st('<path d="M7 17 17 7M8 7h9v9"/>'),
+chl:st('<path d="m15 5-7 7 7 7"/>'),chr:st('<path d="m9 5 7 7-7 7"/>'),
+up:st('<path d="M12 19V5M6 11l6-6 6 6"/>'),
+star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.6 5.200 4.800 9.400 10 10-5.200.6-9.400 4.800-10 10-.6-5.200-4.800-9.400-10-10 5.200-.6 9.400-4.800 10-10z"/></svg>',
+cat:'<svg viewBox="0 0 64 64" fill="var(--bg)" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 26 14 8l14 8h8l14-8-2 18c4 4 5 10 3 16-2 7-8 12-15 12h-8c-7 0-13-5-15-12-2-6-1-12 3-16z"/><circle cx="25" cy="32" r="2" fill="currentColor"/><circle cx="39" cy="32" r="2" fill="currentColor"/><path d="M30 38h4l-2 2zM32 40v2"/></svg>'};
+const I=u=>u?`<img src="${u}" alt="" onerror="this.outerHTML='<div class=ph>'+window.PH+'</div>'">`:`<div class="ph">${L.ph}</div>`;
+const ids=["top","about","projects","skills","contact"],pc=p=>p.toLocaleString(L.lang)+(L.lang=="fa"?"٪":"%");
+$("#app").innerHTML=`
+<header><div class="w nav"><a class="logo" href="#top"><span class="mono">${L.mono}</span>${L.logoName||""}</a>
+<nav class="links">${L.nav.map((n,i)=>`<a href="#${ids[i]}">${n}</a>`).join("")}</nav>
+<div class="ic">${L.toggle?`<button id="th" aria-label="Theme">${ic.moon}</button>`:""}<a href="${LINKS.github}" aria-label="GitHub">${ic.gh}</a><a href="${LINKS.linkedin}" aria-label="LinkedIn">${ic.in}</a>${L.resumeBtn?`<a class="btn o sm" href="${LINKS.resume}">${L.resume} ${ic.dl}</a>`:""}</div></div></header>
+<section id="top" class="hero"><div class="w hg"><div><p class="hi">${L.hi}</p><h1>${L.name}</h1><p class="role">${ic.star}${L.role}</p><p class="lead">${L.intro}</p>
+<div class="cta"><a class="btn" href="#projects">${L.cta1} ${ic.arr}</a><a class="btn o" href="${L.cta2.h}">${L.cta2.t} ${ic[L.cta2.i]}</a></div></div>
+<div class="pic"><div class="blob">${I(L.img.hero)}</div><span class="cat">${ic.cat}</span><span class="note n1">${L.n1}</span></div></div></section>
+<section id="about"><div class="w ab"><div class="pic"><div class="fr">${I(L.img.about)}</div><span class="note n2">${L.n2}</span></div>
+<div><h2>${L.aboutT}</h2><p class="lead" style="max-width:56ch">${L.about}</p><ul>${L.info.map(x=>`<li>${ic[x[0]]}<span>${x[1]}</span></li>`).join("")}</ul></div></div></section>
+<section id="skills"><div class="w"><h2>${L.skillsT}</h2><div class="sg">${S.map(s=>`<div class="sk"><div class="sh"><b style="background:${s[3]}">${s[2]}</b><span>${s[0]}</span></div><div class="bar"><i style="width:${s[1]}%"></i></div><small>${pc(s[1])}</small></div>`).join("")}</div></div></section>
+<section id="projects"><div class="w"><h2>${L.projT}</h2><div class="tr" tabindex="0" aria-label="${L.projT}">
+${L.projects.map(p=>`<article class="pc"><div class="im">${I(p.img)}</div><div class="pb"><h3>${p.t}</h3><p>${p.d}</p><div class="tg">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="pl"><a href="${p.live}" target="_blank" rel="noopener">${L.live} ${ic.ext}</a><a href="${p.gh}" target="_blank" rel="noopener">${L.gh} ${ic.gh}</a></div></div></article>`).join("")}</div>
+<div class="ct"><div id="ds"></div><div class="ar"><button id="pv" aria-label="Previous">${ic.chl}</button><button id="nx" aria-label="Next">${ic.chr}</button></div></div></div></section>
+<section id="contact"><div class="w g2"><div><h2>${L.contactT}</h2><p class="lead">${L.contactP}</p><div class="cl"><a href="${LINKS.email}">${ic.mail}${L.email}</a><a href="${LINKS.linkedin}">${ic.in}LinkedIn</a><a href="${LINKS.github}">${ic.gh}GitHub</a></div></div>
+<div class="cpic"><div class="arch">${I(L.img.contact)}</div><span class="note n4">${L.n4}</span></div></div></section>
+<footer><div class="w fw"><a class="logo" href="#top"><span class="mono">${L.mono}</span>${L.logoName||L.name}</a><p>${L.copy}</p><a class="up" href="#top" aria-label="Top">${ic.up}</a></div></footer>`;
+const th=$("#th");if(th)th.onclick=()=>{const d=document.documentElement;d.dataset.theme=d.dataset.theme=="dark"?"light":"dark"};
+const tr=$(".tr"),pv=$("#pv"),nx=$("#nx"),ds=$("#ds"),rt=L.dir=="rtl",sw=()=>tr.children[0].getBoundingClientRect().width+18;
+function upd(){const s=sw(),m=tr.scrollWidth-tr.clientWidth,p=Math.abs(tr.scrollLeft),n=Math.max(1,Math.round(m/s)+1),c=Math.min(n-1,Math.round(p/s));
+ds.innerHTML=Array.from({length:n},(_,i)=>`<i class="${i==c?"on":""}" data-i="${i}"></i>`).join("");pv.disabled=p<4;nx.disabled=p>m-4}
+const go=d=>tr.scrollBy({left:(rt?-1:1)*d*sw(),behavior:"smooth"});
+pv.onclick=()=>go(-1);nx.onclick=()=>go(1);
+ds.onclick=e=>{const i=e.target.dataset.i;if(i!=null)tr.scrollTo({left:(rt?-1:1)*i*sw(),behavior:"smooth"})};
+tr.addEventListener("scroll",upd,{passive:true});addEventListener("resize",upd);upd();
+</script>
+</body>
+</html>
